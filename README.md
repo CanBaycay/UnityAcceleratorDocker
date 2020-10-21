@@ -7,10 +7,10 @@ Supports [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/
 # Setup Option 1: Absolutely Easy Setup
 
 - Install [Docker Desktop](https://www.docker.com/products/docker-desktop).
-- Download and place these files into a directory and keep them there as long as you use Accelerator.
+- Download and place these files into a configuration directory and keep them there as long as you use Accelerator.
 - Install Accelerator.
   - Windows: Double click `Install.bat`.
-  - Others: Open terminal, go to the directory, run: `docker-compose up -d`
+  - Others: Open terminal. Go to the configuration directory. Run: `docker-compose up -d`
 - Open a Unity project. Go to `Preferences` and then `Cache Server` tab. 
 - Set Cache Server Default Mode to `Enabled` and enter Default IP Adress:
   - For working locally, enter `localhost:10080`
@@ -69,7 +69,7 @@ If you enabled Prometheus and Grafana, they are available at:
 
 To remove the Accelerator and its artifacts completely,
 - Windows: Double click `Uninstall.bat`.
-- Others: Open terminal. Go to the directory. Run: `docker-compose down -v --rmi all`
+- Others: Open terminal. Go to the configuration directory. Run: `docker-compose down -v --rmi all`
 
 It will remove all asset cache and all configuration along with the Accelerator installation.
 
