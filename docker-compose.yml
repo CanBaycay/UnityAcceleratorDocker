@@ -14,13 +14,13 @@ services:
     volumes:
       - accelerator-volume:/agent
     env_file:
-      - ./accelerator.env
+      - ./config/accelerator.env
     ports:
       - "10080:10080"
 #  prometheus:
 #    image: prom/prometheus
 #    volumes:
-#      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+#      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
 #      - prometheus-volume:/prometheus
 #    ports:
 #      - "9090:9090"
@@ -29,7 +29,7 @@ services:
 #  grafana:
 #    image: grafana/grafana
 #    volumes:
-#      - ./datasources-prometheus.yml:/etc/grafana/provisioning/datasources/datasources-prometheus.yml:ro
+#      - ./config/datasources-prometheus.yml:/etc/grafana/provisioning/datasources/datasources-prometheus.yml:ro
 #      - grafana-volume:/var/lib/grafana
 #    ports:
 #      - "3000:3000"

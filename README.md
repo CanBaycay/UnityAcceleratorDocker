@@ -44,6 +44,7 @@ Prometheus and Grafana are not included by default to keep the server lightweigh
 - Enter Default IP Adress as `localhost:10080`
 - Click `Check Connection` and make sure you see `"Connection successful"` message.
 
+## Stats
 If you enabled Prometheus and Grafana, they are available at:
 - Prometheus: http://localhost:9090/
   - Nothing much to see here. Proceed to Grafana.
@@ -56,7 +57,7 @@ If you enabled Prometheus and Grafana, they are available at:
 ## What's Next
 
 - Reverse proxies should be used in real world scenarios, which is not covered in this configuration. They allow more safer ways to access services, while allows more intuitive address naming instead of addresses being full of ports and IPs.
-- If you like to see behind the scenes, here are some links.
+- If you'd like to see some behind the scenes, here are some links.
   - Metrics: http://localhost:10080/metrics
   - Health: http://localhost:10080/api/agent-health
 
