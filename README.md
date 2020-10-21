@@ -60,8 +60,20 @@ If you enabled Prometheus and Grafana, they are available at:
   - Metrics: http://localhost:10080/metrics
   - Health: http://localhost:10080/api/agent-health
 
+
+# Uninstall / Update
+
+To remove the Accelerator and its artifacts completely, double-click `Uninstall.bat` or run the command below.
+
+`docker-compose down -v --rmi all`
+
+It will remove all asset cache and all configuration along with the Accelerator installation.
+
+Note that the Accelerator automatically updates itself. If you need to update it manually, easiest and most reliable way to do is to uninstall and install it again. The latest version will automatically be downloaded when installing from the beginning.
+
+
 # Related Links
-- Forums might have more information than documents:
+- Forums might have extra information over documents
   - https://forum.unity.com/threads/welcome-to-unity-accelerator.742922/
   - https://forum.unity.com/forums/unity-accelerator.392/
 - Documents
