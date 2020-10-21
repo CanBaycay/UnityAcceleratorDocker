@@ -1,24 +1,24 @@
 # Unity Accelerator Docker Configuration
-Docker configuration for a simple [Unity Accelerator](https://hub.docker.com/r/unitytechnologies/accelerator) server. Ideal to be used locally or inside an internal network. 
+Docker configuration for a simple [Unity Accelerator](https://hub.docker.com/r/unitytechnologies/accelerator) server.
 
-Supports [Prometheus](https://prometheus.io/) that collects stats from Accelerator.
-
-Supports [Grafana](https://grafana.com/) that helps visualizing these stats.
+Supports [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/) that collects stats from Accelerator and displays in customized dashboards.
 
 
-# Option 1 / Absolutely Easy Setup for Windows
+# Setup Option 1: Absolutely Easy Setup for Windows
 
 - Install [Docker Desktop for Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows). Might need to also configure Hyper-V or WSL 2 on your system.
+- Download and place these files into a directory and keep them there until you uninstall Accelerator.
 - Double click `Install.bat` to let Unity Accelerator come into life.
-- Go to `Unity preferences` and Cache Server tab. 
-- Set Cache Server Default Mode to `Enabled`.
-- Enter Default IP Adress as `localhost:10080`
+- Go to `Unity Preferences` and then `Cache Server` tab. 
+- Set Cache Server Default Mode to `Enabled` and enter Default IP Adress:
+  - For working locally, enter `localhost:10080`
+  - For working in network, find and enter the IP of the system that runs Docker. For example `192.168.0.200:10080`
 - Click `Check Connection` and make sure you see `"Connection successful"` message.
 
 From now on, Accelerator will serve in the background seamlessly and your Unity asset import times will reduce drastically. 
 
 
-# Option 2 / Advanced Setup
+# Setup Option 2: Advanced Setup
 
 Default configurations are only ideal for local use and not ideal for environments where safety is essential. So modify the configurations below as you need.
 
@@ -39,9 +39,10 @@ Prometheus and Grafana are not included by default to keep the server lightweigh
 - Take a look at the `Dashboard`: http://localhost:10080 (Default Username: admin, Password: admin)
 
 ## Unity Configuration
-- Go to `Unity preferences` and Cache Server tab. 
-- Set Cache Server Default Mode to `Enabled`.
-- Enter Default IP Adress as `localhost:10080`
+- Go to `Unity Preferences` and then `Cache Server` tab. 
+- Set Cache Server Default Mode to `Enabled` and enter Default IP Adress:
+  - For working locally, enter `localhost:10080`
+  - For working in network, find and enter the IP of the system that runs Docker. For example `192.168.0.200:10080`
 - Click `Check Connection` and make sure you see `"Connection successful"` message.
 
 ## Stats
@@ -64,7 +65,7 @@ If you enabled Prometheus and Grafana, they are available at:
 
 # Uninstall / Update
 
-To remove the Accelerator and its artifacts completely, double-click `Uninstall.bat` or run the command below.
+To remove the Accelerator and its artifacts completely, double click `Uninstall.bat` or run the command below.
 
 `docker-compose down -v --rmi all`
 
