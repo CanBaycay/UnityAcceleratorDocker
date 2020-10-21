@@ -1,0 +1,37 @@
+version: '3.8'
+
+volumes:
+  accelerator-volume:
+    driver: 'local'
+#  prometheus-volume:
+#    driver: 'local'
+#  grafana-volume:
+#    driver: 'local'
+
+services:
+  accelerator:
+    image: unitytechnologies/accelerator
+    volumes:
+      - accelerator-volume:/agent
+    env_file:
+      - ./accelerator.env
+    ports:
+      - "10080:10080"
+#  prometheus:
+#    image: prom/prometheus
+#    volumes:
+#      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+#      - prometheus-volume:/prometheus
+#    ports:
+#      - "9090:9090"
+#    depends_on:
+#      - accelerator
+#  grafana:
+#    image: grafana/grafana
+#    volumes:
+#      - ./datasources-prometheus.yml:/etc/grafana/provisioning/datasources/datasources-prometheus.yml:ro
+#      - grafana-volume:/var/lib/grafana
+#    ports:
+#      - "3000:3000"
+#    depends_on:
+#      - prometheus
