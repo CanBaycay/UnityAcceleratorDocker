@@ -1,38 +1,33 @@
 # Unity Accelerator Docker Configuration
-Docker configuration of a simple `Unity Accelerator` server to be used locally or in an internal network. 
+Docker configuration for a simple [Unity Accelerator](https://hub.docker.com/r/unitytechnologies/accelerator) server. Ideal to be used locally or inside an internal network. 
 
-Supports `Prometheus` that collects stats from Accelerator.
+Supports [Prometheus](https://prometheus.io/) that collects stats from Accelerator.
 
-Supports `Grafana` that helps visualizing these stats.
+Supports [Grafana](https://grafana.com/) that helps visualizing these stats.
 
-See https://hub.docker.com/r/unitytechnologies/accelerator for more.
 
 # Option 1 / Absolutely Easy Setup for Windows
 
-- Install `Docker Desktop for Windows`.
-- Double click `Install.bat` to let Unity Accelerator to come into life.
+- Install [Docker Desktop for Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows). Might need to also configure Hyper-V or WSL 2 on your system.
+- Double click `Install.bat` to let Unity Accelerator come into life.
 - Go to `Unity preferences` and Cache Server tab. 
 - Set Cache Server Default Mode to `Enabled`.
 - Enter Default IP Adress as `localhost:10080`
-- Make sure you see `"Connection successful"` message.
+- Click `Check Connection` and make sure you see `"Connection successful"` message.
 
 From now on, Accelerator will serve in the background seamlessly and your Unity asset import times will reduce drastically. 
+
 
 # Option 2 / Advanced Setup
 
 Default configurations are only ideal for local use and not ideal for environments where safety is essential. So modify the configurations below as you need.
 
 ## First Time Setup
-See `accelerator.env` for initial configuration that are used when first creating the images. So configure these before everything else. Possible values are documented here:
+See `accelerator.env` for initial configuration used when first creating the images. So configure these before everything else. Possible values are documented here:
 
 https://docs.unity3d.com/Manual/UnityAccelerator.html#docker
 
-Default `Dashboard` password is set to `admin`.
-
-```
-USER=admin
-PASSWORD=admin
-```
+## Enable Prometheus and Grafana
 
 Prometheus and Grafana are not included by default to keep the server lightweight. Open `docker-compose.yml` and uncomment all lines if you'd like to have a cool looking dashboard.
 
@@ -41,17 +36,22 @@ Prometheus and Grafana are not included by default to keep the server lightweigh
 - Open command line.
 - Go to the folder where you put these files.
 - Run: `docker-compose up -d`
-- Take a look at the `Dashboard`: http://localhost:10080
+- Take a look at the `Dashboard`: http://localhost:10080 (Default Username: admin, Password: admin)
 
 ## Unity Configuration
 - Go to `Unity preferences` and Cache Server tab. 
 - Set Cache Server Default Mode to `Enabled`.
 - Enter Default IP Adress as `localhost:10080`
-- Make sure you see `"Connection successful"` message.
+- Click `Check Connection` and make sure you see `"Connection successful"` message.
 
 If you enabled Prometheus and Grafana, they are available at:
-- Grafana: http://localhost:3000/
 - Prometheus: http://localhost:9090/
+  - Nothing much to see here. Proceed to Grafana.
+- Grafana: http://localhost:3000/ (Default Username: admin, Password: admin)
+  - Create a new Dashboard.
+  - Add new Panel.
+  - Add a new metric. For example `uta > uta_agent_sys_cpu_percent` that shows CPU usage history.
+  - Add more Panels for parameters you'd like to track.
 
 ## What's Next
 
